@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 from pages.login_po import LoginPage
 from pages.product_po import ProductsPage
 
-def test_login_with_empty_fields():
+def test_sort_products_low_to_high():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)  # Запуск браузера
         context = browser.new_context()
@@ -18,8 +18,12 @@ def test_login_with_empty_fields():
 
         page.wait_for_selector('.inventory_list') 
         
+        # Сортировка товаров по цене
         products_page.sort_of_products()
+        
+        # Проверка корректности сортировки
+        prices = products_page.get_products_price()
+        assert prices == sorted(prices), "Prices are not sorted correctly"
 
         context.clear_cookies()
         browser.close()
-
