@@ -31,4 +31,4 @@ def test_get_token_invalid(username, password):
     client = APIClient()
     response = client.get_token(username, password)
     print(username, password, response)
-    assert response.status_code == 200
+    assert response.status_code == 400

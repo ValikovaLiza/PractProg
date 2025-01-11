@@ -41,7 +41,7 @@ invalid_booking_data = [
                 "checkout": "2024-01-10"
             }
         },
-        500
+        400
     ),
     (
         {
@@ -54,7 +54,7 @@ invalid_booking_data = [
                 "checkout": "2024-01-10"
             }
         }, 
-    200
+    400
     )
 ]
 
